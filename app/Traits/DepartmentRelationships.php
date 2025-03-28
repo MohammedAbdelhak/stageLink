@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Internship;
+use App\Models\Member;
 use App\Models\Speciality;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -50,5 +51,16 @@ trait DepartmentRelationships {
     public function internships(): HasMany
     {
         return $this->hasMany(Internship::class, 'department_id');
+    }
+
+
+    /**
+     * Get all of the applications for the DepartmentRelationships
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Member::class, 'department_id');
     }
 }

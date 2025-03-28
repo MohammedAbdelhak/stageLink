@@ -13,17 +13,6 @@
                     {{ $internship->department?->name . ',' . $internship->department?->faculty . ',' . $internship->department?->university }}
                 </div>
             </flux:subheading>
-            <flux:subheading size="lg" class="mb-6 flex space-x-1">
-                <div>From </div>
-                <div class="font-bold">
-                    {{ $internship->start_date}}
-                </div>
-                <div> To  </div>
-                <div class="font-bold">
-                    {{ $internship->end_date}}
-                </div>
-            </flux:subheading>
-            
             @if ($internship->places_available > 0)
                 <flux:subheading size="lg" class="mb-6 flex space-x-1">
                     <div>Number Of Places Available : </div>

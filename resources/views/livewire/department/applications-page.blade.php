@@ -1,28 +1,12 @@
 <div class="h-full">
-    <x-internship.header />
+    <x-application.header />
     <div class="w-full h-4/5 ">
-        {{-- <table class="w-full border-collapse border border-gray-300 ">
-            <thead>
-                <tr>
-                    <th class="border p-2 rounded-lt-2xl">Title</th>
-                    <th class="border p-2">Description</th>
-                    <th class="border p-2">N° Places</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data as $item)
-                    <tr>
-                        <td class="border p-2">{{ $item->title }}</td>
-                        <td class="border p-2"></td>
-                        <td class="border p-2"></td>
-                    </tr>
-            </tbody>
-        </table> --}}
 
 
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg grid grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-y-3 lg:gap-6">
 
-            @foreach ($data as $item)
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg  w-full">
+
+            {{-- @foreach ($data as $item)
                 <a href="{{ route('internship.details', ['id' => $item->id]) }}"
                     class=" p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:scale-95 hover:cursor-pointer transition duration-200">
                     <div>
@@ -31,16 +15,6 @@
                     <div class="mb-3  font-normal text-gray-700 dark:text-gray-400">
                         {{"@" . $item->company->name }}
                     </div>
-                    <flux:subheading size="lg" class="mb-6 flex space-x-1">
-                        <div>From </div>
-                        <div class="font-bold">
-                            {{ $item->start_date}}
-                        </div>
-                        <div> To  </div>
-                        <div class="font-bold">
-                            {{ $item->end_date}}
-                        </div>
-                    </flux:subheading>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">    {{ Str::limit($item->description, 100) }}</p>
                     <div 
                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -53,51 +27,96 @@
                     </div>
                 </a>
             @endforeach
-
-
-
-            {{-- <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+ --}}
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Title
+                            Student
                         </th>
                         <th scope="col" class="px-6 py-3">
-                           Company
+                            Intenrship
                         </th>
-                        
+                       <th scope="col" class="px-6 py-3">
+                          Company
+                        </th>
                         <th scope="col" class="px-6 py-3">
-                            Description
+                            Start Date
                         </th>
-                        
+
                         <th scope="col" class="px-6 py-3">
-                            N° Places
+                            End Date
                         </th>
-                      
+
+                        <th scope="col" class="px-6 py-3">
+                            Certificate
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-700 border-b dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $item->title }}
-                        </th>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
-                            {{ $item->company->name }}
-                        </td>
-                       
-                        <td class="px-6 py-4">
-                            {{ Str::limit($item->description, 50) }}
-                        </td>
-                        <td class="px-6 py-4 font-medium">
-                            {{ $item->places_available }}
-                        </td>
-                      
-                    </tr>
-                  
-                     @endforeach
+                    @if (sizeOf($data) > 0)
+                        @foreach ($data as $item)
+                            <tr
+                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-700 border-b dark:border-gray-700 border-gray-200">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $item->student->firstname }} {{ $item->student->lastname }}
+                                </th>
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                                    {{ $item->internship->title }}
+                                </td>
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                                    {{ $item->company->name }}
+                                </td>
+
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                                    {{ $item->internship->start_date }}
+                                </td>
+
+
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                                    {{ $item->internship->end_date }}
+                                </td>
+
+                                
+                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                                    certificate
+                                </td>
+                                <td class="px-6 py-4">
+                                  actions
+                                </td>
+                               
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-700 border-b dark:border-gray-700 border-gray-200">
+
+                            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                                No Records To Show Yet.
+                            </td>
+
+                            <td class="px-6 py-4">
+                            </td>
+                            <td class="px-6 py-4 font-medium">
+                            </td>
+                            <td class="px-6 py-4">
+                            </td>
+                            <td class="px-6 py-4">
+                            </td>
+                            <td class="px-6 py-4">
+                            </td>
+                            <td class="px-6 py-4">
+                            </td>
+                            
+                        </tr>
+                    @endif
                 </tbody>
-            </table> --}}
+            </table>
         </div>
         {{-- pagination --}}
         <div class="flex w-full justify-end pt-3">

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Company;
+use App\Models\Department;
 use App\Models\Internship;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -17,7 +19,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Internship::class, 'internship_id' )->constrained()->onDelete('cascade');
             $table->foreignIdFor(User::class, 'student_id' )->constrained()->onDelete('cascade');
-            $table->foreignIdFor(User::class, 'company_id' )->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Company::class, 'company_id' )->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Department::class, 'department_id' )->constrained()->onDelete('cascade');
+            $table->text('certificate')->nullable();
             $table->enum("status" , ['accepted' , 'refused' , 'pending']);
             $table->timestamps();
         });

@@ -6,8 +6,8 @@
 
     <form wire:submit="register" class="flex flex-col gap-6">
 
-
-        <flux:select wire:model="type" placeholder="Choose Role...">
+            
+        <flux:select wire:model="type"  :label="__('Type')" placeholder="Choose Role...">
             <flux:select.option >Student</flux:select.option>
             <flux:select.option>University</flux:select.option>
             <flux:select.option  >Company</flux:select.option>

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('description');
             $table->foreignIdFor(User::class, 'company_id')->constrained()->onDelete('cascade');
             $table->foreignIdFor(Department::class, 'department_id');
+            $table->date("start_date");
+            $table->date("end_date");
             $table->integer('places_available')->default(1);
             $table->timestamps();
         });

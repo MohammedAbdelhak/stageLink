@@ -14,8 +14,25 @@ use Livewire\Component;
 #[Layout('components.layouts.auth')]
 class Register extends Component
 {
+
+    // public string $backgroundPicName = 'students';
     public string $type = 'Student';
-    
+    // public function updatedType()
+    // {
+    //     switch ($this->type) {
+    //         case 'Student':
+    //             $this->backgroundPicName = 'students';
+    //             break;
+    //             case 'Department':
+    //                 $this->backgroundPicName = 'department';
+    //                 break;
+
+    //         default:
+    //         $this->backgroundPicName = 'cooperate1';
+    //         break;
+    //     }
+    //     $this->backgroundPicName = $this->type === 'Student' ? 'studentBg' : 'teacherBg';
+    // }
     public string $firstname = '';
     public string $lastname = '';
 

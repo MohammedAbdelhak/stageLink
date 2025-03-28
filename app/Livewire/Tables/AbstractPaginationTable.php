@@ -9,7 +9,7 @@ abstract class AbstractPaginationTable extends Component
     public int $perPage = 6;
     public int $currentPage = 1;
     
-    abstract protected function fetchData(): LengthAwarePaginator;
+    abstract protected function fetchData(): LengthAwarePaginator   ;
 
     public function nextPage()
     {

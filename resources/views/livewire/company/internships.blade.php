@@ -1,5 +1,5 @@
 <div class="h-full">
-    <x-internship.header />
+    <x-application.header />
     <div class="w-full h-4/5 ">
         {{-- <table class="w-full border-collapse border border-gray-300 ">
             <thead>
@@ -20,9 +20,9 @@
         </table> --}}
 
 
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg grid grid-cols-1 lg:grid-cols-2 gap-y-6 lg:gap-y-3 lg:gap-6">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
 
-            @foreach ($data as $item)
+            {{-- @foreach ($data as $item)
                 <a href="{{ route('internship.details', ['id' => $item->id]) }}"
                     class=" p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:scale-95 hover:cursor-pointer transition duration-200">
                     <div>
@@ -31,16 +31,6 @@
                     <div class="mb-3  font-normal text-gray-700 dark:text-gray-400">
                         {{"@" . $item->company->name }}
                     </div>
-                    <flux:subheading size="lg" class="mb-6 flex space-x-1">
-                        <div>From </div>
-                        <div class="font-bold">
-                            {{ $item->start_date}}
-                        </div>
-                        <div> To  </div>
-                        <div class="font-bold">
-                            {{ $item->end_date}}
-                        </div>
-                    </flux:subheading>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">    {{ Str::limit($item->description, 100) }}</p>
                     <div 
                         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -52,18 +42,20 @@
                         </svg>
                     </div>
                 </a>
-            @endforeach
+            @endforeach --}}
 
+                <div class="flex justify-end items-center my-3">
+                    <flux:button icon="mouse-pointer-2" variant="primary" class="hover:cursor-pointer">Add New Internship</flux:button>
+                </div>
 
-
-            {{-- <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Title
                         </th>
                         <th scope="col" class="px-6 py-3">
-                           Company
+                           Department
                         </th>
                         
                         <th scope="col" class="px-6 py-3">
@@ -83,7 +75,7 @@
                             {{ $item->title }}
                         </th>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
-                            {{ $item->company->name }}
+                            {{ $item->department->name }}
                         </td>
                        
                         <td class="px-6 py-4">
@@ -97,8 +89,9 @@
                   
                      @endforeach
                 </tbody>
-            </table> --}}
+            </table>
         </div>
+
         {{-- pagination --}}
         <div class="flex w-full justify-end pt-3">
             <!-- Previous Button -->
@@ -121,12 +114,7 @@
                 </svg>
             </div>
         </div>
-        {{-- <div class="flex justify-between mt-4">
-            <button wire:click="firstPage" class="px-4 py-2 bg-gray-300">First</button>
-            <button wire:click="previousPage" class="px-4 py-2 bg-gray-300">Previous</button>
-            <button wire:click="nextPage" class="px-4 py-2 bg-gray-300">Next</button>
-            <button wire:click="lastPage" class="px-4 py-2 bg-gray-300">Last</button>
-        </div> --}}
+      
     </div>
 
 </div>

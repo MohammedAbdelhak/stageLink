@@ -3,6 +3,7 @@ namespace App\Traits;
 
 use App\Models\User;
 use App\Models\Internship;
+use App\Models\Member;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait CompanyRelationships {
@@ -27,6 +28,16 @@ trait CompanyRelationships {
     public function internships(): HasMany
     {
         return $this->hasMany(Internship::class, 'company_id');
+    }
+
+    /**
+     * Get all of the applications for the CompanyRelationships
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Member::class, 'company_id');
     }
 
 }
