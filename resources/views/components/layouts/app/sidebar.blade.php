@@ -16,6 +16,14 @@
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="building-2" :href="route('internships')" :current="request()->routeIs('internships')" wire:navigate>{{ __('Internships') }}</flux:navlist.item>
                     <flux:navlist.item icon="file-text" :href="route('applications')" :current="request()->routeIs('applications')" wire:navigate>{{ __('Applications') }}</flux:navlist.item>
+                    
+                    @if (Auth::user()->type != 'Student')
+                    <flux:navlist.item icon="file-text" :href="route('accounts')" :current="request()->routeIs('accounts')" wire:navigate>{{ __('Accounts') }}</flux:navlist.item>
+                   @endif
+
+
+
+
                 </flux:navlist.group>
             </flux:navlist>
 

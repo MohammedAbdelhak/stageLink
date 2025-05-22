@@ -9,7 +9,7 @@
             
         <flux:select wire:model="type"  :label="__('Type')" placeholder="Choose Role...">
             <flux:select.option >Student</flux:select.option>
-            <flux:select.option>University</flux:select.option>
+            <flux:select.option value="Department">University</flux:select.option>
             <flux:select.option  >Company</flux:select.option>
            
         </flux:select>

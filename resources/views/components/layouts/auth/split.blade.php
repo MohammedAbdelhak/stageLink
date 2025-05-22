@@ -17,7 +17,7 @@
                 </div>
             </a>
 
-            <div class="relative h-full "></div>
+            <div class="relative h-full bg-white"></div>
         </div>
 
         {{-- side 2 --}}

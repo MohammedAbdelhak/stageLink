@@ -14,27 +14,42 @@ class ActiveAccount
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()) {
-
-
-            switch (Auth::user()->status) {
+        // dd(Auth::user());
+        $currentUser = Auth::user();
+        if ($currentUser) {
+            switch ($currentUser->status) {
 
                 case 'unassigned':
-                    # code...
+                    // dd("hehe");
+
+                    switch ($currentUser->type) {
+                        case 'Student':
+                            return redirect('settings/assignUni');
+                            break;
+                        case 'Company':
+                            return redirect('settings/assignComp');
+                            break;
+                        case 'Department':
+                            return redirect('settings/assignDep');
+                            break;
+                    }
+
                     break;
 
                 case 'active':
                     return $next($request);
                     break;
 
-                default:
-
+                case 'pending':
+                    // dd("hehe");
+                    return redirect('pending');
+                    # code...
                     break;
             }
-        }else {
-            return $next($request);
+        } else {
+            return redirect('login');
         }
     }
 }

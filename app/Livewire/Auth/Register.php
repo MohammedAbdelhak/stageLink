@@ -15,24 +15,9 @@ use Livewire\Component;
 class Register extends Component
 {
 
-    // public string $backgroundPicName = 'students';
+    public string $backgroundPicName = 'students';
     public string $type = 'Student';
-    // public function updatedType()
-    // {
-    //     switch ($this->type) {
-    //         case 'Student':
-    //             $this->backgroundPicName = 'students';
-    //             break;
-    //             case 'Department':
-    //                 $this->backgroundPicName = 'department';
-    //                 break;
 
-    //         default:
-    //         $this->backgroundPicName = 'cooperate1';
-    //         break;
-    //     }
-    //     $this->backgroundPicName = $this->type === 'Student' ? 'studentBg' : 'teacherBg';
-    // }
     public string $firstname = '';
     public string $lastname = '';
 
@@ -49,11 +34,11 @@ class Register extends Component
     public function register(): void
     {
         $validated = $this->validate([
-            'type' => ['required', 'string', 'max:255', 'in:Student,Company,University'],
+            'type' => ['required', 'string', 'max:255', 'in:Student,Company,Department'],
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'phone' => ['required', 'string',  'max:14', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'phone' => ['required', 'string',  'max:14', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
