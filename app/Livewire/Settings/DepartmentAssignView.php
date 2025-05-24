@@ -87,7 +87,7 @@ class DepartmentAssignView extends Component
             return;
         }
 
-        // Create new department
+        
         $department= Department::create([
             'name' => $this->createdDepartment,
             'faculty' => $this->createdFaculty,
@@ -96,7 +96,7 @@ class DepartmentAssignView extends Component
         ]);
 
         session()->flash('message', 'New department added successfully. You can now select it.');
-        $this->reset(['createdUniversity', 'createdFaculty', 'createdDepartment']);
+       
         $this->universities = Department::select('university')->distinct()->pluck('university')->toArray();
 
 
@@ -104,6 +104,11 @@ class DepartmentAssignView extends Component
         $user->department_id = $department->id;
         $user->status = 'pending'; 
         $user->save();
+
+        $this->university = $this->createdUniversity;
+        $this->faculty = $this->createdFaculty;
+        $this->department = $this->createdDepartment;
+        $this->reset(['createdUniversity', 'createdFaculty', 'createdDepartment']);
     }
 
     public function render()

@@ -9,11 +9,14 @@ class PendingView extends Component
 {
 
 
-    public function mount(){
-        if(Auth::user()->status != 'pending'){
+    public function mount()
+    {
+        if (Auth::user()->status != 'pending') {
             return redirect('/dashboard');
         }
     }
+
+    
     public function render()
     {
         return view('livewire.pending-view');

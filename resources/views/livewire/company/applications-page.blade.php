@@ -87,12 +87,12 @@
                                 <td>
 
                                     @if ($item->status == 'pending')
-                                        <flux:modal.trigger name="accept-application">
+                                        <flux:modal.trigger name="accept-application-{{ $item->id }}">
                                             <flux:button :icon="'calendar-check'" class="hover:cursor-pointer">
                                             </flux:button>
                                         </flux:modal.trigger>
 
-                                        <flux:modal name="accept-application" class="md:w-96">
+                                        <flux:modal name="accept-application-{{ $item->id }}" class="md:w-96">
                                             <div class="space-y-6">
                                                 <div>
                                                     <flux:heading size="lg">Accepting Application </flux:heading>
@@ -102,20 +102,23 @@
 
                                                 <div class="flex">
                                                     <flux:spacer />
-
-                                                    <flux:button type="submit" variant="primary" class="bg-emerald-500 hover:bg-emerald-400 hover:cursor-pointer"
-                                                        wire:click="acceptApplication({{ $item->id }})">Confirm</flux:button>
+                                                    <flux:modal.close>
+                                                        <flux:button type="submit" variant="primary"
+                                                            class="bg-emerald-500 hover:bg-emerald-400 hover:cursor-pointer"
+                                                            wire:click="acceptApplication({{ $item->id }})">Confirm
+                                                        </flux:button>
+                                                    </flux:modal.close>
                                                 </div>
                                             </div>
                                         </flux:modal>
 
 
-                                        <flux:modal.trigger name="refuse-application">
+                                        <flux:modal.trigger name="refuse-application-{{ $item->id }}">
                                             <flux:button :icon="'square-x'" class="hover:cursor-pointer">
                                             </flux:button>
                                         </flux:modal.trigger>
 
-                                        <flux:modal name="refuse-application" class="md:w-96">
+                                        <flux:modal name="refuse-application-{{ $item->id }}" class="md:w-96">
                                             <div class="space-y-6">
                                                 <div>
                                                     <flux:heading size="lg">Application Refusal </flux:heading>
@@ -125,19 +128,21 @@
 
                                                 <div class="flex">
                                                     <flux:spacer />
-
-                                                    <flux:button type="submit" variant="danger"
-                                                        wire:click="refuseApplication({{ $item->id }})">Confirm</flux:button>
+                                                    <flux:modal.close>
+                                                        <flux:button type="submit" variant="danger"
+                                                            wire:click="refuseApplication({{ $item->id }})">Confirm
+                                                        </flux:button>
+                                                    </flux:modal.close>
                                                 </div>
                                             </div>
                                         </flux:modal>
                                     @endif
-                                        
-                                    <flux:modal.trigger name="show-profile">
+
+                                    <flux:modal.trigger name="show-profile-{{ $item->id }}">
                                         <flux:button :icon="'square-user'" class="hover:cursor-pointer"></flux:button>
                                     </flux:modal.trigger>
 
-                                    <flux:modal name="show-profile" variant="flyout">
+                                    <flux:modal name="show-profile-{{ $item->id }}" variant="flyout">
                                         <div class="space-y-6">
                                             <div>
                                                 <flux:heading size="lg">{{ $item->student->firstname }}

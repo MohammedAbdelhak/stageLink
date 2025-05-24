@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Middleware\ActiveAccount;
+use App\Http\Middleware\IsAdmin;
 use App\Livewire\AccountsPage;
+use App\Livewire\Admin\Accounts;
+use App\Livewire\Admin\Companies;
+use App\Livewire\Admin\Departments;
 use App\Livewire\Pages\ApplicationsPage;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -49,6 +53,12 @@ Route::get('/internship/{id}', InternshipPage::class)->name('internship.details'
 Route::get('/applications', ApplicationsPage::class)->name('applications')->middleware(ActiveAccount::class);
 Route::get('/accounts', AccountsPage::class)->name('accounts')->middleware(ActiveAccount::class);
 
+
+//admin
+
+Route::get('/admin/accounts', Accounts::class)->name('admin.accounts')->middleware(IsAdmin::class);
+Route::get('/admin/companies', Companies::class)->name('admin.companies')->middleware(IsAdmin::class);
+Route::get('/admin/departments', Departments::class)->name('admin.departments')->middleware(IsAdmin::class);
 
 
 
